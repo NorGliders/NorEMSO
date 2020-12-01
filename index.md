@@ -1,18 +1,17 @@
-<h1 id ="home">Deployment: Svinøy</h1>
-<h5>Rechargeable extended Bay Slocum G3 Glider running the Svinøy transect along the Southeastern part of the Norwegian Sea</h5>
+<h1 id ="home">Deployment: Iceland Sea</h1>
 <h3 id ="meta">Metadata</h3>
 <table>
 	<tr>
 		<td>Glider</td>
-		<td>durin</td>
+		<td>urd</td>
 	</tr>
 	<tr>
 		<td>Serial Number</td>
-		<td>872</td>
+		<td>883</td>
 	</tr>
 	<tr>
 		<td>Platform</td>
-		<td>Slocum G3 extended bay with rechargeable batteries</td>
+		<td>Slocum G3 extended bay</td>
 	</tr>
 	<tr>
 		<td>Depth Rating</td>
@@ -20,7 +19,7 @@
 	</tr>
 	<tr>
 		<td>Deployed</td>
-		<td>2020.10.10 23:30 UTC</td>
+		<td>2020.11.29 10:00 UTC</td>
 	</tr>
 	<tr>
 		<td>Payload</td>
