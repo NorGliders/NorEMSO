@@ -1,37 +1,128 @@
-## Welcome to GitHub Pages
+<!DOCTYPE html>
+<html lang="en">
+<head  runat="server">
+	<asp:ContentPlaceHolder ID="htmlHead" runat="server" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="refresh" content="600" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<meta charset="UTF-8">
+	 
+	<!-- If IE use the latest rendering engine -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	 
+	<!-- Set the page to the width of the device and set the zoon level -->
+	<meta name="viewport" content="width = device-width, initial-scale = 1">
+	<title>GFI Gliders</title> 
 
-You can use the [editor on GitHub](https://github.com/elyfant/NorEMSO/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+</head>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<body>
 
-### Markdown
+	<div class="topnav">
+	  <a href="#meta">Meta</a>
+	  <a href="#science">Science</a>
+	  <a href="#flight">Flight</a>
+	  <a href="#surface">Surface</a>
+	  <img src="odin\20201008-BARENTS_SEA\uib_logo_2.jpg" id="logo" />
+	</div>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+	<div class="container">
+<h1 id ="home">Deployment Summary: Durin</h1>
+<h2>Svinoy Transect Line</h2>
+<h3 id ="meta">Metadata</h3>
+<table>
+	<tr>
+		<td>Glider</td>
+		<td>durin</td>
+	</tr>
+	<tr>
+		<td>Serial Number</td>
+		<td>872</td>
+	</tr>
+	<tr>
+		<td>Deployed</td>
+		<td>2020.10.10 23:30 UTC</td>
+	</tr>
+	<tr>
+		<td>Payload</td>
+		<td>C,T</td>
+	</tr>
+</table>
+<h3 id ="science">Science Data</h3>
+<h4>Temperature</h4>
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-profile_sci_water_temp.png">
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-time_scatter_sci_water_temp.png">
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-3D_sci_water_temp.png">
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-sci_water_temp.png">
+<h4>Salinity</h4>
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-profile_salinity.png">
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-time_scatter_salinity.png">
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-3D_salinity.png">
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-salinity.png">
+<h4>Salinity</h4>
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-profile_potential_density.png">
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-time_scatter_potential_density.png">
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-3D_potential_density.png">
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-potential_density.png">
+<h4>TS plots</h4>
+<img src="durin\20201128-SVINOY\sci_transects\EntireMission-Grid_TS.png">
+<h4>Last 24hrs</h4>
+<img src="durin\20201128-SVINOY\sci_transects\Last24Hours-profile_sci_water_temp.png">
+<img src="durin\20201128-SVINOY\sci_transects\Last24Hours-profile_salinity.png">
+<img src="durin\20201128-SVINOY\sci_transects\Last24Hours-profile_potential_density.png">
+<h4>Last Segment</h4>
+<img src="durin\20201128-SVINOY\sci_transects\LastSegment-contour-sci_water_temp.png">
+<img src="durin\20201128-SVINOY\sci_transects\LastSegment-contour-salinity.png">
+<img src="durin\20201128-SVINOY\sci_transects\LastSegment-contour-sci_water_pressure.png">
+<img src="durin\20201128-SVINOY\sci_transects\LastSegment-CTD_profile.png">
+<img src="durin\20201128-SVINOY\sci_transects\LastSegment-CTD_scatter.png">
+<img src="durin\20201128-SVINOY\sci_transects\LastSegment-density_scatter.png">
 
-```markdown
-Syntax highlighted code block
+<h3 id ="flight">Flight Data</h3>
 
-# Header 1
-## Header 2
-### Header 3
+<h4>Entire Mission</h4>
+<img src="durin\20201128-SVINOY\eng_transects\EntireMission-m_depth.png">
+<img src="durin\20201128-SVINOY\eng_transects\EntireMission-m_battpos.png">
+<img src="durin\20201128-SVINOY\eng_transects\EntireMission-m_heading.png">
+<img src="durin\20201128-SVINOY\eng_transects\EntireMission-m_pitch.png">
+<img src="durin\20201128-SVINOY\eng_transects\EntireMission-m_roll.png">
+<img src="durin\20201128-SVINOY\eng_transects\EntireMission-m_battpos_Vs_m_pitch.png">
+<img src="durin\20201128-SVINOY\eng_transects\EntireMission-c_heading_Vs_m_heading.png">
+<h4>Last Segment</h4>
+<img src="durin\20201128-SVINOY\eng_transects\LastSegment-depth_rate.png">
+<img src="durin\20201128-SVINOY\eng_transects\LastSegment-m_battpos.png">
+<img src="durin\20201128-SVINOY\eng_transects\LastSegment-m_de_oil_vol.png">
+<img src="durin\20201128-SVINOY\eng_transects\LastSegment-m_depth.png">
+<img src="durin\20201128-SVINOY\eng_transects\LastSegment-m_heading.png">
+<img src="durin\20201128-SVINOY\eng_transects\LastSegment-m_pitch.png">
+<img src="durin\20201128-SVINOY\eng_transects\LastSegment-m_roll.png">
+<img src="durin\20201128-SVINOY\eng_transects\LastSegment-water_speed.png">
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/elyfant/NorEMSO/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+<h3 id ="surface">Surface Data</h3>
+<img src="durin\20201128-SVINOY\surface\battery_usage.png">
+<img src="durin\20201128-SVINOY\surface\power_usage.png">
+<img src="durin\20201128-SVINOY\surface\c_autoballast_state.png"> 
+<img src="durin\20201128-SVINOY\surface\m_avg_climb_rate.png">
+<img src="durin\20201128-SVINOY\surface\m_avg_dive_rate.png">
+<img src="durin\20201128-SVINOY\surface\m_avg_upward_inflection_time.png">
+<img src="durin\20201128-SVINOY\surface\m_battery.png">
+<img src="durin\20201128-SVINOY\surface\m_coulomb_amphr.png">
+<img src="durin\20201128-SVINOY\surface\m_coulomb_amphr_total.png">
+<img src="durin\20201128-SVINOY\surface\m_digifin_leakdetect_reading.png">
+<img src="durin\20201128-SVINOY\surface\m_iridium_attempt_num.png">
+<img src="durin\20201128-SVINOY\surface\m_iridium_signal_strength.png">
+<img src="durin\20201128-SVINOY\surface\m_leakdetect_voltage.png">
+<img src="durin\20201128-SVINOY\surface\m_leakdetect_voltage_forward.png">
+<img src="durin\20201128-SVINOY\surface\m_leakdetect_voltage_science.png">
+<img src="durin\20201128-SVINOY\surface\m_lithium_battery_relative_charge.png">
+<img src="durin\20201128-SVINOY\surface\m_tot_num_inflections.png">
+<img src="durin\20201128-SVINOY\surface\m_vacuum.png">
+<img src="durin\20201128-SVINOY\surface\m_water_vx.png">
+<img src="durin\20201128-SVINOY\surface\m_water_vy.png">
+<img src="durin\20201128-SVINOY\surface\srf_dac.png">
+<br>
+</div>
+</body>
+</html>
