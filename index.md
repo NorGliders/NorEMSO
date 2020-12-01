@@ -1,4 +1,3 @@
-
 <h1 id ="home">Deployment: Svinøy</h1>
 <h5>Rechargeable extended Bay Slocum G3 Glider running the Svinøy transect along the Southeastern part of the Norwegian Sea</h5>
 <h3 id ="meta">Metadata</h3>
@@ -30,10 +29,10 @@
 </table>
 <h3 id ="science">Science Data</h3>
 <h4>Temperature</h4>
-<img src="durin\20201128-SVINOY\sci_transects\EntireMission-profile_sci_water_temp.png">
-<img src="durin\20201128-SVINOY\sci_transects\EntireMission-time_scatter_sci_water_temp.png">
-<img src="durin\20201128-SVINOY\sci_transects\EntireMission-3D_sci_water_temp.png">
-<img src="durin\20201128-SVINOY\sci_transects\EntireMission-sci_water_temp.png">
+<img src="https://raw.githubusercontent.com/elyfant/NorEMSO/main/Iceland/science/EntireMission-profile_sci_water_temp.png">
+<img src="https://raw.githubusercontent.com/elyfant/NorEMSO/main/Iceland/science/EntireMission-time_scatter_sci_water_temp.png">
+<img src="https://raw.githubusercontent.com/elyfant/NorEMSO/main/Iceland/science/EntireMission-3D_sci_water_temp.png">
+<img src="https://raw.githubusercontent.com/elyfant/NorEMSO/main/Iceland/science/EntireMission-sci_water_temp.png">
 <h4>Salinity</h4>
 <img src="durin\20201128-SVINOY\sci_transects\EntireMission-profile_salinity.png">
 <img src="durin\20201128-SVINOY\sci_transects\EntireMission-time_scatter_salinity.png">
