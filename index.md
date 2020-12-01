@@ -1,6 +1,6 @@
 
-<h1 id ="home">Deployment Summary: Durin</h1>
-<h2>Svinoy Transect Line</h2>
+<h1 id ="home">Deployment: Svinøy</h1>
+<h5>Rechargeable extended Bay Slocum G3 Glider running the Svinøy transect along the Southeastern part of the Norwegian Sea</h5>
 <h3 id ="meta">Metadata</h3>
 <table>
 	<tr>
@@ -12,12 +12,20 @@
 		<td>872</td>
 	</tr>
 	<tr>
+		<td>Platform</td>
+		<td>Slocum G3 extended bay with rechargeable batteries</td>
+	</tr>
+	<tr>
+		<td>Depth Rating</td>
+		<td>1000m</td>
+	</tr>
+	<tr>
 		<td>Deployed</td>
 		<td>2020.10.10 23:30 UTC</td>
 	</tr>
 	<tr>
 		<td>Payload</td>
-		<td>C,T</td>
+		<td>SBE pumped CTD</td>
 	</tr>
 </table>
 <h3 id ="science">Science Data</h3>
