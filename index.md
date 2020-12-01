@@ -1,34 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head  runat="server">
-	<asp:ContentPlaceHolder ID="htmlHead" runat="server" />
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta http-equiv="refresh" content="600" />
-	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-	<meta http-equiv="Pragma" content="no-cache" />
-	<meta http-equiv="Expires" content="0" />
-	<meta charset="UTF-8">
-	 
-	<!-- If IE use the latest rendering engine -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	 
-	<!-- Set the page to the width of the device and set the zoon level -->
-	<meta name="viewport" content="width = device-width, initial-scale = 1">
-	<title>GFI Gliders</title> 
 
-</head>
-
-<body>
-
-	<div class="topnav">
-	  <a href="#meta">Meta</a>
-	  <a href="#science">Science</a>
-	  <a href="#flight">Flight</a>
-	  <a href="#surface">Surface</a>
-	  <img src="odin\20201008-BARENTS_SEA\uib_logo_2.jpg" id="logo" />
-	</div>
-
-	<div class="container">
 <h1 id ="home">Deployment Summary: Durin</h1>
 <h2>Svinoy Transect Line</h2>
 <h3 id ="meta">Metadata</h3>
@@ -123,6 +93,5 @@
 <img src="durin\20201128-SVINOY\surface\m_water_vy.png">
 <img src="durin\20201128-SVINOY\surface\srf_dac.png">
 <br>
-</div>
-</body>
-</html>
+
+
