@@ -25,7 +25,7 @@
          position: relative;
          }
          h1 {
-         margin-top: 15px;
+         margin-top: 100px;
          margin-bottom: 15px;
          }
          p {
@@ -50,17 +50,13 @@
       <nav class="navbar calcite-navbar navbar-fixed-top calcite-text-light calcite-bg-dark">
          <div class="calcite-title calcite-overflow-hidden">
             <a target="" href="index.html">
-            <img src="static\images\uib.png" style="cursor: default; height: 35px; margin-top: 2px; margin-right: 5px;">
+            <img src="static\images\uib.png" style="cursor: default; height: 45px; margin-top: 0px; margin-right: 0px; margin-left: 4px;">
             </a>
             <span class="calcite-title-divider"></span>
             <span class="calcite-title-main">NorEMSO Ocean Gliders</span>
          </div>
       </nav>
 
-      <div class="calcite-map">
-         <div id="mapViewDiv"></div>
-      </div>
-    
       <div class="container">
          <div class="row">
             <div class="page-header-title col-lg-6 col-md-6 col-sm-12">
@@ -93,16 +89,18 @@
          <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
                <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation" class="active"><a href="#surface" aria-controls="surface" role="tab" data-toggle="tab">Surface</a></li>
+                  <li role="presentation" class="active"><a href="#surfacings" aria-controls="surfacings" role="tab" data-toggle="tab">Surfacings</a></li>
+                  <li role="presentation"><a href="#surface" aria-controls="surface" role="tab" data-toggle="tab">Surface data</a></li>
                   <li role="presentation"><a href="#flight" aria-controls="flight" role="tab" data-toggle="tab">Flight</a></li>
+                  <li role="presentation"><a href="#science" aria-controls="segments" role="tab" data-toggle="tab">Segments</a></li>
                   <li role="presentation"><a href="#science" aria-controls="science" role="tab" data-toggle="tab">Science</a></li>
-                  <li role="presentation"><a href="#depthProfile" aria-controls="depthProfile" role="tab" data-toggle="tab">Science</a></li>
                </ul>
                <div class="tab-content">
-                  <div role="tabpanel" class="tab-pane fade in active" id="surface"></div>
+                  <div role="tabpanel" class="tab-pane fade in active" id="surfacings"></div>
+                  <div role="tabpanel" class="tab-pane fade" id="surface"></div>
                   <div role="tabpanel" class="tab-pane fade" id="flight"></div>
+                  <div role="tabpanel" class="tab-pane fade" id="segments"></div>
                   <div role="tabpanel" class="tab-pane fade" id="science"></div>
-                  <div role="tabpanel" class="tab-pane fade" id="depthProfile"></div>
                </div>
             </div>
          </div>
