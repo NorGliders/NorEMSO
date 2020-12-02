@@ -6,6 +6,10 @@
 		<td>urd</td>
 	</tr>
 	<tr>
+		<td>Last update</td>
+		<td></td>
+	</tr>
+	<tr>
 		<td>Serial Number</td>
 		<td>883</td>
 	</tr>
