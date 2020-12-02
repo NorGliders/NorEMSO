@@ -15,11 +15,7 @@
 <title>Active Deployments</title>
 
 
-<link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-bootstrap.min-v0.2.css">
 
-<link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.2.css">
-
-<link rel="stylesheet" href="https://js.arcgis.com/4.3/esri/css/main.css">
 <style>
 
 	.btn-group{
