@@ -60,7 +60,7 @@
       <div class="container">
          <div class="row">
             <div class="page-header-title col-lg-6 col-md-6 col-sm-12">
-               <h2 class="text-left">Deployment Data1</h2>
+               <h2 class="text-left">Deployment Data2</h2>
             </div>
          </div>
          <div id="plotly"></div>
@@ -85,18 +85,18 @@
          <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
                <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation" class="active"><a href="#surfacings" aria-controls="surfacings" role="tab" data-toggle="tab">Surfacings</a></li>
+                  <li role="presentation" class="active"><a href="#science" aria-controls="science" role="tab" data-toggle="tab">Science</a></li>
+                  <li role="presentation"><a href="#flight" aria-controls="flight" role="tab" data-toggle="tab">Flight</a></li>
                   <li role="presentation"><a href="#surface" aria-controls="surface" role="tab" data-toggle="tab">Surface Data</a></li>
                   <li role="presentation"><a href="#segments" aria-controls="segments" role="tab" data-toggle="tab">Segments</a></li>
-                  <li role="presentation"><a href="#flight" aria-controls="flight" role="tab" data-toggle="tab">Flight</a></li>
-                  <li role="presentation"><a href="#science" aria-controls="science" role="tab" data-toggle="tab">Science</a></li>
+                  <li role="presentation"><a href="#surfacings" aria-controls="surfacings" role="tab" data-toggle="tab">Surfacings</a></li>
                </ul>
                <div class="tab-content">
-                  <div role="tabpanel" class="tab-pane fade in active" id="surfacings"></div>
-                  <div role="tabpanel" class="tab-pane fade" id="surface"></div>
-                  <div role="tabpanel" class="tab-pane fade" id="segments"></div>                  
+                  <div role="tabpanel" class="tab-pane fade in active" id="science"></div>
                   <div role="tabpanel" class="tab-pane fade" id="flight"></div>
-                  <div role="tabpanel" class="tab-pane fade" id="science"></div>
+                  <div role="tabpanel" class="tab-pane fade" id="surface"></div>                  
+                  <div role="tabpanel" class="tab-pane fade" id="segments"></div>
+                  <div role="tabpanel" class="tab-pane fade" id="surfacings"></div>
                </div>
             </div>
          </div>
@@ -175,12 +175,12 @@
          // --- Read JSON ---
          $.getJSON("static/active_gliders_surface.json", function(obj) {  
 
-           var gliderNames = Object.keys(obj.gliders);
+           var gliderNames = Object.keys(obj.gliders.project);
            var gliderObj = obj.gliders; 
 
            // Loop through active gliders
            for (var g in gliderNames) {
-               console.log(g)
+               console.log('for glider' + gliderNames[g])
                // Insert glider names into nav bar and dropdown button
                var htmlStrDropdown = '<li><a href="gliders.html">' + gliderNames[g] + '</a></li>'
                $('.dropdownGliders').append(htmlStrDropdown);
@@ -209,44 +209,34 @@
              }
 
             // Display plots of new period
-            // Surface
-            var $list = $('<div />');
-            $list.addClass('plot_data'); 
-            $list.append( $('<img class="img-responsive center-block" />').attr('src', tracks_name ) );
-            var tracks_name = ('gliders/' + gliderNames[0]  + '/surface/GliderTrack-LastSegment.png');
-            //$list.append( $('<img class="img-responsive center-block" />').attr('src', tracks_name ) ); 
-            $(tvars ).each(function(i, myvar) { 
-               var png_src = ('gliders/' + gliderNames[0] + '/surface/' + myvar + '.png');
-               $list.append( $('<img class="img-responsive center-block" />').attr('src', png_src ) );
-            });
-            $('#surface').append( $list );
-
-            // Flight
-            var $list = $('<div />');
-            $list.addClass('plot_data'); 
-            $(fvars ).each(function(i, myvar) { 
-               var png_src = ('gliders/' + gliderNames[0] + '/eng_transects/LastSegment-' + myvar + '.png');
-               $list.append( $('<img class="img-responsive center-block" />').attr('src', png_src ) );
-            });
-            $('#flight').append( $list );
 
             // Science
             var $list = $('<div />');
             $list.addClass('plot_data'); 
-            $(svars_seg ).each(function(i, myvar) { 
-               var png_src = ('gliders/' + gliderNames[0] + '/sci_transects/LastSegment-' + myvar + '.png');
+            $(science_plots ).each(function(i, myvar) { 
+               var png_src = ('static/' + gliderNames[0] + '/science/' + myvar + '.png');
                $list.append( $('<img class="img-responsive center-block" />').attr('src', png_src ) );
             });
             $('#science').append( $list );
 
-            // Science 2 - Depth Profile
+            // Flight
             var $list = $('<div />');
             $list.addClass('plot_data'); 
-            $(svars_seg_2 ).each(function(i, myvar) { 
-               var png_src = ('gliders/' + gliderNames[0] + '/sci_transects/LastSegment-' + myvar + '.png');
+            $(flight_plots ).each(function(i, myvar) { 
+               var png_src = ('static/' + gliderNames[0] + '/flight/' + myvar + '.png');
                $list.append( $('<img class="img-responsive center-block" />').attr('src', png_src ) );
             });
-            $('#depthProfile').append( $list );
+            $('#flight').append( $list );
+
+            // Surface
+            var $list = $('<div />');
+            $list.addClass('plot_data'); 
+            $(surface_plots ).each(function(i, myvar) { 
+               var png_src = ('static/' + gliderNames[0] + '/surface/' + myvar + '.png');
+               $list.append( $('<img class="img-responsive center-block" />').attr('src', png_src ) );
+            });
+            $('#surface').append( $list );
+
          });   
 
          // --- Clear current time period by deleting class "selected" then apply this to new selection ---
