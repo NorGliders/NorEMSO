@@ -113,32 +113,74 @@
       <script>
          // SCRIPT FOR GLIDER.HTML
          // $("#hideData").hide();
-         var fvars = [ 'm_depth', 'm_ballast_pumped', 'm_battpos', 'm_pitch', 'm_heading', 'm_battpos_Vs_m_pitch', 'c_heading_Vs_m_heading'] //, 'm_digifin_leakdetect_reading', 'm_roll',]; 
-         var svars = [ 'profile_sci_water_temp', 'profile_salinity', 'profile_potential_density', 'profile_dissolved_oxygen', 'profile_sci_flbbcd_chlor_units', 'profile_sci_flbbcd_cdom_units', 'profile_sci_flbbcd_bb_units', 'profile_sci_bsipar_par'];
-         //var svars = [ 'profile_sci_water_temp', 'profile_salinity', 'profile_potential_density', 'profile_dissolved_oxygen', 'profile_sci_bb3slo_b470_scaled','profile_sci_bb3slo_b532_scaled','profile_sci_bb3slo_b660_scaled' ];
+         var science_plots = [ 'EntireMission-profile_sci_water_temp'
+                                 'EntireMission-profile_salinity',
+                                 'EntireMission-profile_potential_density',
+                                 'EntireMission-3D_sci_water_temp',
+                                 'EntireMission-3D_salinity',
+                                 'EntireMission-3D_potential_density',
+                                 'EntireMission-time_scatter_sci_water_temp',
+                                 'EntireMission-time_scatter_salinity',
+                                 'EntireMission-time_scatter_potential_density',
+                                 'LastSegment-CTD_profile',
+                                 'LastSegment-CTD_scatter',
+                                 'LastSegment-density_scatter']
 
-         var svars_2 = [ 'time_scatter_sci_water_temp', 'time_scatter_salinity', 'time_scatter_potential_density', 'time_scatter_dissolved_oxygen', 'time_scatter_sci_flbbcd_chlor_units', 'time_scatter_sci_flbbcd_cdom_units', 'time_scatter_sci_flbbcd_bb_units', 'time_scatter_sci_bsipar_par'];
-         //var svars_2 = [ 'time_scatter_sci_water_temp', 'time_scatter_salinity', 'time_scatter_potential_density', 'time_scatter_dissolved_oxygen', 'time_scatter_sci_bb3slo_b470_scaled','time_scatter_sci_bb3slo_b532_scaled','time_scatter_sci_bb3slo_b660_scaled'];
+         var flight_plots = [ 'EntireMission-m_depth',
+                              'EntireMission-m_battpos',
+                              'EntireMission-m_battpos_Vs_m_pitch', 
+                              'EntireMission-m_heading',             
+                              'EntireMission-m_pitch',               
+                              'LastSegment-m_battpos',
+                              'LastSegment-m_de_oil_vol',            
+                              'LastSegment-m_depth',
+                              'LastSegment-m_heading',
+                              'LastSegment-m_pitch',
+                              'LastSegment-depth_rate',              
+                              'LastSegment-water_speed']
 
-         var svars_seg = [ 'CTD_profile', 'CTD_scatter', 'profile-salinity','profile-sci_water_temp', 'profile-dissolved_oxygen', 'BBFLCD_profile', 'profile-sci_flbbcd_chlor_units', 'profile-sci_flbbcd_cdom_units', 'profile-sci_flbbcd_bb_units', 'profile-sci_bsipar_par' ];
-         //var svars_seg = [ 'CTD_profile', 'CTD_scatter', 'profile-salinity','profile-sci_water_temp', 'profile-dissolved_oxygen', 'profile-sci_bb3slo_b470_scaled', 'profile-sci_bb3slo_b532_scaled','profile-sci_bb3slo_b660_scaled',];
-
-         var svars_seg_2 = [ 'CTD_scatter' ];
-         var tvars = [ 'battery_diagnostics', 'm_battery', 'm_coulomb_amphr_total','m_coulomb_amphr', 'm_lithium_battery_relative_charge','srf_dac','speed','m_final_water_vx','m_final_water_vy','u_use_current_correction','m_vacuum','m_leakdetect_voltage_forward','m_leakdetect_voltage','m_digifin_leakdetect_reading','m_iridium_signal_strength','m_iridium_attempt_num', 'm_tot_num_inflections', 'm_tot_horz_dist','m_last_yo_time','c_autoballast_state'];
-         console.log('hi 1')
-         alert('hi 1')
+         var surface_plots = [ 'battery_usage',                
+                              'c_autoballast_state',          
+                              'c_autoballast_volume',         
+                              'c_climb_bpump',                
+                              'c_dive_bpump',                 
+                              'c_iridium_current_num', 
+                              'm_iridium_attempt_num',
+                              'm_iridium_signal_strength',       
+                              'c_wpt_lat',                    
+                              'c_wpt_lon',
+                              'm_water_vx',  
+                              'm_water_vy', 
+                              'srf_dac',                 
+                              'm_avg_climb_rate',             
+                              'm_avg_dive_rate',             
+                              'm_vacuum',
+                              'u_alt_min_depth',
+                              'm_tot_num_inflections',
+                              'm_avg_upward_inflection_time', 
+                              'm_battery',                    
+                              'm_bms_aft_current',            
+                              'm_bms_ebay_current',           
+                              'm_bms_pitch_current',          
+                              'm_coulomb_amphr',
+                              'm_coulomb_amphr_total',
+                              'm_lithium_battery_relative_charge',
+                              'power_usage',
+                              'm_digifin_leakdetect_reading',
+                              'm_leakdetect_voltage',
+                              'm_leakdetect_voltage_forward',
+                              'm_leakdetect_voltage_science']
 
 
          // --- Read JSON ---
-         $.getJSON("../static/active_gliders_surface.json", function(obj) {  
+         $.getJSON("static/active_gliders_surface.json", function(obj) {  
 
-           console.log('hi 2')
-           alert('hi 2')
            var gliderNames = Object.keys(obj.gliders);
            var gliderObj = obj.gliders; 
 
            // Loop through active gliders
            for (var g in gliderNames) {
+               console.log(g)
                // Insert glider names into nav bar and dropdown button
                var htmlStrDropdown = '<li><a href="gliders.html">' + gliderNames[g] + '</a></li>'
                $('.dropdownGliders').append(htmlStrDropdown);
