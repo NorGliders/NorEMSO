@@ -1,6 +1,6 @@
 // SCRIPT FOR GLIDER.HTML
 // $("#hideData").hide();
-var fvars = [ 'm_depth', 'm_ballast_pumped', 'm_battpos', 'm_pitch', 'm_heading', 'm_battpos_Vs_m_pitch', 'c_heading_Vs_m_heading'] //, 'm_digifin_leakdetect_reading', 'm_roll',]; 
+var fvars = [ 'm_depth', 'm_de_oil_vol', 'm_battpos', 'm_pitch', 'm_heading', 'm_battpos_Vs_m_pitch', 'c_heading_Vs_m_heading', 'm_fin', 'm_roll'] //, 'm_digifin_leakdetect_reading', 'm_roll',]; 
 var svars = [ 'profile_sci_water_temp', 'profile_salinity', 'profile_potential_density', 'profile_dissolved_oxygen', 'profile_sci_flbbcd_chlor_units', 'profile_sci_flbbcd_cdom_units', 'profile_sci_flbbcd_bb_units', 'profile_sci_bsipar_par'];
 //var svars = [ 'profile_sci_water_temp', 'profile_salinity', 'profile_potential_density', 'profile_dissolved_oxygen', 'profile_sci_bb3slo_b470_scaled','profile_sci_bb3slo_b532_scaled','profile_sci_bb3slo_b660_scaled' ];
 
