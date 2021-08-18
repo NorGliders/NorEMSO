@@ -232,11 +232,16 @@
             }
          } 
 
+         // SST layer
+        // var proxy = 'server/proxy.php';
+
+
          var mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
 
          var gray = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1}),
-            dark  = L.tileLayer(mbUrl, {id: 'mapbox/dark-v10', tileSize: 512, zoomOffset: -1}),
-            oceans = L.tileLayer('http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}.png');
+             dark  = L.tileLayer(mbUrl, {id: 'mapbox/dark-v10', tileSize: 512, zoomOffset: -1}),
+             oceans = L.tileLayer('http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}.png'),  
+             wmsLayer = L.tileLayer.wms('http://metmaps.met.no/metmaps/default.map?', {layers: 'ice.ice_chart'});           
 
          var map = L.map('map', {
             center: [initLat, initLon],
@@ -247,13 +252,14 @@
          var baseLayers = {
             "Oceans": oceans,     
             "Grayscale": gray,
-            "Dark": dark
+            "Dark": dark  
          };
 
          var overlays = {
             "Glider Surfacings": surfacings,
             "Glider Track": tracks,
-            "Glider Latest": gliderLatest
+            "Glider Latest": gliderLatest,
+            "SST": wmsLayer 
           //  "Current Waypoint": waypoints
          };
 
