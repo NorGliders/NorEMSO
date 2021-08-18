@@ -240,8 +240,8 @@
 
          var gray = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1}),
              dark  = L.tileLayer(mbUrl, {id: 'mapbox/dark-v10', tileSize: 512, zoomOffset: -1}),
-             oceans = L.tileLayer('http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}.png'),  
-             wmsLayer = L.tileLayer.wms('http://metmaps.met.no/metmaps/default.map?', {layers: 'ice.ice_chart'});           
+             oceans = L.tileLayer('http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}.png');
+            // wmsLayer = L.tileLayer.wms('http://metmaps.met.no/metmaps/default.map?', {layers: 'ice.ice_chart'});           
 
          var map = L.map('map', {
             center: [initLat, initLon],
@@ -258,8 +258,8 @@
          var overlays = {
             "Glider Surfacings": surfacings,
             "Glider Track": tracks,
-            "Glider Latest": gliderLatest,
-            "SST": wmsLayer 
+            "Glider Latest": gliderLatest
+            //"SST": wmsLayer 
           //  "Current Waypoint": waypoints
          };
 
@@ -351,7 +351,7 @@
             var thisGliderName = gliderNames[g] // STR glider name
             var thisProjectObj = gliderObj[thisGliderName]; // OBJ surface structure gliderObj[gliderNames[0]];
                if (thisProject == thisProjectObj.Project){
-                  map.panTo(new L.LatLng(thisProjectObj.TS.Position[0][0][0], thisProjectObj.TS.Position[0][0][1]))
+                  map.flyTo(new L.LatLng(thisProjectObj.TS.Position[0][0][0], thisProjectObj.TS.Position[0][0][1]),6)
                }
             }
             
