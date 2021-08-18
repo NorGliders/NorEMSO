@@ -13,19 +13,10 @@
       <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-bootstrap.min-v0.2.css">
       <link rel="stylesheet" href="https://esri.github.io/calcite-maps/dist/css/calcite-maps-arcgis-4.x.min-v0.2.css">
       <link rel="stylesheet" href="https://js.arcgis.com/4.3/esri/css/main.css">
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
       <style>
          .btn-group{
          margin-bottom: 20px;
          }
-
-         #map {
-         width: 100%;
-         height: 350px;
-         margin-top: 50px;
-         }
-
          #mapViewDiv {
          width: 100%;
          height: 350px;
@@ -34,7 +25,7 @@
          position: relative;
          }
          h1, h2 {
-         margin-top: 30px;
+         margin-top: 80px;
          margin-bottom: 15px;
          }
          p {
@@ -66,10 +57,7 @@
          </div>
       </nav>
 
-      <div id='map'></div>
-
       <div class="container">
-
          <div class="row">
             <div class="page-header-title col-lg-6 col-md-6 col-sm-12">
                <h2 class="text-left">Deployment Data</h2>
@@ -100,11 +88,15 @@
                   <li role="presentation" class="active"><a href="#science" aria-controls="science" role="tab" data-toggle="tab">Science</a></li>
                   <li role="presentation"><a href="#flight" aria-controls="flight" role="tab" data-toggle="tab">Flight</a></li>
                   <li role="presentation"><a href="#surface" aria-controls="surface" role="tab" data-toggle="tab">Surface Data</a></li>
+                  <li role="presentation"><a href="#segments" aria-controls="segments" role="tab" data-toggle="tab">Segments</a></li>
+                  <li role="presentation"><a href="#surfacings" aria-controls="surfacings" role="tab" data-toggle="tab">Surfacings</a></li>
                </ul>
                <div class="tab-content">
                   <div role="tabpanel" class="tab-pane fade in active" id="science"></div>
                   <div role="tabpanel" class="tab-pane fade" id="flight"></div>
                   <div role="tabpanel" class="tab-pane fade" id="surface"></div>                  
+                  <div role="tabpanel" class="tab-pane fade" id="segments"></div>
+                  <div role="tabpanel" class="tab-pane fade" id="surfacings"></div>
                </div>
             </div>
          </div>
@@ -134,10 +126,13 @@
                         'LastSegment-density_scatter']
 
       var flight_plots = [ 'EntireMission-m_depth',
+                     'EntireMission-m_de_oil_vol',
                      'EntireMission-m_battpos',
+                     'EntireMission-m_pitch',
                      'EntireMission-m_battpos_Vs_m_pitch', 
                      'EntireMission-m_heading',             
-                     'EntireMission-m_pitch',               
+                     'EntireMission-c_heading_Vs_m_heading',
+                     'EntireMission-m_fin',
                      'LastSegment-m_battpos',
                      'LastSegment-m_de_oil_vol',            
                      'LastSegment-m_depth',
@@ -184,102 +179,27 @@
          var gliderNames = Object.keys(obj.gliders);
          var gliderObj = obj.gliders;  
          var firstProject = gliderObj[gliderNames[0]].Project.toLowerCase()
-         var positions = gliderObj[gliderNames[0]].TS.Position[0];
-         var segmentsTime = gliderObj[gliderNames[0]].TS.Time[0];
-         var segmentsName = gliderObj[gliderNames[0]].TS.SegmentName[0];
-         var lengthLat = positions.length-1;
-         var tracksIcon = L.icon({
-             iconUrl: 'full-moon.png',
-             iconSize:     [8, 8], // size of the icon
-         });
-         var gliderIcon = L.icon({
-             iconUrl: 'slocum_glider.png',
-             iconSize:     [40, 40], // size of the icon
-         });
-         var surfacings = L.layerGroup();
-         var waypoints = L.layerGroup();
-         var tracks = L.layerGroup();
-         var gliderLatest = L.layerGroup();
-         var initLat, initLon = [];
-
-         // Load all glider tracks on load
-         for (var g in gliderObj) {
-            var thisProjectObj = gliderObj[g];
-            var positions = thisProjectObj.TS.Position[0];
-            var segmentsTime = thisProjectObj.TS.Time[0];
-            var segmentsName = thisProjectObj.TS.SegmentName[0];
-            var lengthLat = positions.length-1;
-
-            // Surfacings
-            for (var i=0; i < positions.length; i++){
-               var customPopup = 'Segment: ' + segmentsName[i] + '<br/>Time: ' + segmentsTime[i];
-               L.marker([positions[i][0],positions[i][1]], {icon: tracksIcon}).bindPopup(customPopup).addTo(surfacings);
-            }
-
-            // Tracks
-            L.polyline(positions, {color: 'red'}).addTo(tracks);  
-
-            // Latest Surfacing
-            L.marker([positions[lengthLat][0], positions[lengthLat][1]], {icon: gliderIcon}).bindPopup(segmentsTime[lengthLat]).addTo(gliderLatest);
-
-            // Waypoints
-            //L.marker([63.8,  4.0]).bindPopup('Waypoint 1').addTo(waypoints),
-
-            // Initial map position
-            if (initLat == null) {
-               initLat = positions[lengthLat][0];
-               initLon = positions[lengthLat][1];
-            }
-         } 
-
-         var mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-
-         var gray = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1}),
-            dark  = L.tileLayer(mbUrl, {id: 'mapbox/dark-v10', tileSize: 512, zoomOffset: -1}),
-            oceans = L.tileLayer('http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}.png');
-
-         var map = L.map('map', {
-            center: [initLat, initLon],
-            zoom: 6,
-            layers: [oceans, surfacings, tracks, gliderLatest] // waypoints,
-         });
-
-         var baseLayers = {
-            "Oceans": oceans,     
-            "Grayscale": gray,
-            "Dark": dark
-         };
-
-         var overlays = {
-            "Glider Surfacings": surfacings,
-            "Glider Track": tracks,
-            "Glider Latest": gliderLatest
-          //  "Current Waypoint": waypoints
-         };
-
-         L.control.layers(baseLayers, overlays).addTo(map);
 
          // Loop through active gliders
          for (var g in gliderNames) {
-            var thisProjectName = gliderNames[g] // STR glider name
-            var thisProjectObj = gliderObj[thisProjectName]; // OBJ surface structure gliderObj[gliderNames[0]];
+            var thisGliderName = gliderNames[g] // STR glider name
+            var thisGliderObj = gliderObj[thisGliderName]; // OBJ surface structure gliderObj[gliderNames[0]];
 
             // Make first glider default
             if(g==0){
-               var gliderDropdownStr = ('<li><a>' + thisProjectObj.Project + '</a></li>'); //+  thisProjectObj.skuld + ' 
-               $('.gliderBtn').html(thisProjectObj.Project + ' <span class="caret"></span>');
+               var gliderDropdownStr = ('<li><a>' + thisGliderObj.Project + '</a></li>'); 
+               $('.gliderBtn').html(thisGliderObj.Project + ' <span class="caret"></span>');
                $('.dropdownSelectGliders').append(gliderDropdownStr);
                $('.dropdownSelectGliders li').last().addClass("selectGlider1")
                $('.dropdownSelectGliders li').last().addClass("selected1")
                $('.dropdownSelectGliders li').last().addClass("preselected1")
                   }
             else {
-               var gliderDropdownStr = ('<li><a>' + thisProjectObj.Project + '</a></li>');
+               var gliderDropdownStr = ('<li><a>' + thisGliderObj.Project + '</a></li>');
                $('.dropdownSelectGliders').append(gliderDropdownStr);
                $('.dropdownSelectGliders li').last().addClass("selectGlider1")
                   }  
                }
-
 
          // Display plots of first project on load
          // Science
@@ -330,25 +250,15 @@
          // Get newly selected time period
          var thisTime = $('.timeBtn').text().replace(/\s+/g, '');
          // Get newly selected  glider
-         var thisProject = $('.gliderBtn').text().trim();
+         var thisGlider = $('.gliderBtn').text().trim();
          // Old time 
          var oldTime = $('.selected').text().replace(/\s+/g, '');
          // Old glider
-         var oldProject = $('.selected1').text().trim();
+         var oldGlider = $('.selected1').text().trim();
 
          // Only proceed if these these both aren't the current settings
-         if (thisProject != oldProject) {
+         if (thisGlider != oldGlider) {
 
-            // Pan to area
-            // This glider latest poistion
-         for (var g in gliderNames) {
-            var thisGliderName = gliderNames[g] // STR glider name
-            var thisProjectObj = gliderObj[thisGliderName]; // OBJ surface structure gliderObj[gliderNames[0]];
-               if (thisProject == thisProjectObj.Project){
-                  map.panTo(new L.LatLng(thisProjectObj.TS.Position[0][0][0], thisProjectObj.TS.Position[0][0][1]))
-               }
-            }
-            
             // Remove selected classes and apply to new selections
             $('.selected').removeClass('selected'); 
             $('.selected1').removeClass('selected1');
@@ -358,12 +268,12 @@
             // Delete current plots
             $(".plot_data").remove();
 
-            // Add new plots  thisProject
+            // Add new plots  thisGlider
             // Science
             var $list = $('<div />');
             $list.addClass('plot_data'); 
             $(science_plots ).each(function(i, myvar) { 
-            var png_src = ('static/' + thisProject.toLowerCase() + '/science/' + myvar + '.png');
+            var png_src = ('static/' + thisGlider.toLowerCase() + '/science/' + myvar + '.png');
             $list.append( $('<img class="img-responsive center-block" />').attr('src', png_src ) );
             });
             $('#science').append( $list );
@@ -372,7 +282,7 @@
             var $list = $('<div />');
             $list.addClass('plot_data'); 
             $(flight_plots ).each(function(i, myvar) { 
-            var png_src = ('static/' + thisProject.toLowerCase() + '/flight/' + myvar + '.png');
+            var png_src = ('static/' + thisGlider.toLowerCase() + '/flight/' + myvar + '.png');
             $list.append( $('<img class="img-responsive center-block" />').attr('src', png_src ) );
             });
             $('#flight').append( $list );
@@ -381,7 +291,7 @@
             var $list = $('<div />');
             $list.addClass('plot_data'); 
             $(surface_plots ).each(function(i, myvar) { 
-            var png_src = ('static/' + thisProject.toLowerCase() + '/surface/' + myvar + '.png');
+            var png_src = ('static/' + thisGlider.toLowerCase() + '/surface/' + myvar + '.png');
             $list.append( $('<img class="img-responsive center-block" />').attr('src', png_src ) );
             });
             $('#surface').append( $list );
